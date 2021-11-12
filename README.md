@@ -1,6 +1,6 @@
 # appdevproject
 
-A new Flutter project.
+A Flutter project from NewGate Development group from the Application Development Project
 
 ## Getting Started
 
