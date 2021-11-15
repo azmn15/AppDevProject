@@ -25,6 +25,69 @@ void validation(){
 bool obserText = true;
 
 class _LoginState extends State<Login> {
+  widget _buildAllPart(){
+    return Container(
+                height: 300,
+                width: double.infinity,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                   children: <Widget>[
+                     Text(
+                       "Login",
+                       style: TextStyle(fontSize: 50,fontWeight: FontWeight.bold),
+                     ),
+                     mytextformField(
+                       name: "Email",
+                       validator: validator: (value){
+                         if(value == ""){
+                           return "Please fill The Email";
+                         }
+                         else if(!regExp.hasMatch(value!)){
+                           return "Invalid Email";
+                         }
+                         return "";
+                       },
+                     ),
+                     passwordtextfieldForm(
+                       obserText: obserText,
+                       name: "Password",
+                       validator: (value){
+                         if(value == ""){
+                           return "Please fill in the Password";
+                         }
+                         else if(value!.length <8){
+                           return "Password it too short";
+                         }
+                         return null;
+                       },
+                       onTap: (){
+                             FocusScope.of(context).unfocus();
+                             setState(() {
+                               obserText =!obserText;
+                             }
+                           );
+                          },
+                    ),
+                    mybutton(onPressed:(){
+                      vaildation();
+                    },
+                    name: "Login",
+                    ), //myButton
+                    ChangeScreeen(
+                      name: "SignUp",
+                      whichAccount: "I have not account",
+                      onTap: (){
+                         Navigator.of(context).pushReplacement(
+                           MaterialPageRoute(
+                             builder: (ctx) => SignUp(),
+                          ),
+                        );
+                       },
+                    )
+                   ],
+                ),
+              )
+  }
   @override 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,95 +98,7 @@ class _LoginState extends State<Login> {
           child: Column(     
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Container(
-                height: 300,
-                width: double.infinity,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                   children: <Widget>[
-                     Text(
-                       "Login",
-                       style: TextStyle(fontSize: 50,fontWeight: FontWeight.bold),
-                     ),
-                     TextFormField(
-                       validator: (value){
-                         if(value == ""){
-                           return "Please fill The Email";
-                         }
-                         else if(!regExp.hasMatch(value!)){
-                           return "Invalid Email";
-                         }
-                         return null;
-                       },
-                       decoration: InputDecoration(
-                         border: OutlineInputBorder(),
-                         hintText: "Email",
-                         hintStyle: TextStyle(color: Colors.black),
-                       ),
-                     ),
-                     TextFormField(
-                       obscureText: obserText,
-                       validator: (value){
-                         if(value == ""){
-                           return "Please fill in the Password";
-                         }
-                         else if(value!.length <8){
-                           return "Password it too short";
-                         }
-                         return null;
-                       },
-                       decoration: InputDecoration(
-                         border: OutlineInputBorder(),
-                         hintText: "Password",
-                         suffixIcon: GestureDetector(
-                           onTap: (){
-                             FocusScope.of(context).unfocus();
-                             setState(() {
-                               obserText =!obserText;
-                             });
-                           },
-                           child: Icon(
-                             obserText == true?
-                             Icons.visibility : Icons.visibility_off, 
-                             color: Colors.black
-                             ),
-                           ),
-                         hintStyle: TextStyle(color: Colors.black),
-                         ),
-                     ),
-                    
-                    myButton(onPressed:(){
-                      vaildation();
-                    },
-                    name: "Login",
-                    ), //myButton
-                     Row(
-                       children: <Widget>[
-                         Text("I Don't have an Account"),
-                         SizedBox(
-                           width: 10,
-                         ),
-                         GestureDetector(
-                       onTap: (){
-                         Navigator.of(context).pushReplacement(
-                           MaterialPageRoute(
-                             builder: (ctx) => SignUp(),
-                          ),
-                        );
-                       },
-                       child: Text(
-                         "Sign up", 
-                         style: TextStyle(
-                           color: Colors.cyan,
-                           fontSize: 20,
-                           fontWeight: FontWeight.bold),
-                           ),
-                         ),
-                       ],
-                     ),
-                   ],
-                ),
-              )
+              _buildAllPart(),
             ],
           ),
         ),

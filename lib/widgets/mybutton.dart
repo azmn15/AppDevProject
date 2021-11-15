@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-class myButton extends StatelessWidget{
+class mybutton extends StatelessWidget{
   final function onPressed;
   final String name;
-  myButton({this.name,this.onPressed});
+  mybutton({this.name,this.onPressed});
   @override
   Widget build(BuildContext context){
     return  Container(
