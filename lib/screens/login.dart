@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:appdevproject/screens/signup.dart';
+import '../widgets/mybutton.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -90,16 +91,12 @@ class _LoginState extends State<Login> {
                          hintStyle: TextStyle(color: Colors.black),
                          ),
                      ),
-                     Container(
-                       height: 45,
-                       width: double.infinity,
-                       child: RaisedButton(
-                         child: Text("Login"),
-                         color: Colors.grey, 
-                         onPressed: (){
-                           validation();
-                         }),
-                     ),
+                    
+                    myButton(onPressed:(){
+                      vaildation();
+                    },
+                    name: "Login",
+                    ), //myButton
                      Row(
                        children: <Widget>[
                          Text("I Don't have an Account"),

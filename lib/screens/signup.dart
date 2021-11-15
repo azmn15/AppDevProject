@@ -136,16 +136,12 @@ class _SignUpState extends State<SignUp> {
                           border: OutlineInputBorder(),
                         ),
                       ),
-                      Container(
-                        height: 45,
-                        width: double.infinity,
-                        child: RaisedButton(
-                          child: Text("Register"),
-                          color: Colors.blueGrey[400],
-                          onPressed: () {
-                            validation();
-                          }),
-                      ),
+                     myButton(
+                       name: "SignUp",
+                       onPressed: (){
+                         vaildation();
+                        },
+                       ), //mybutton
                       Row(
                         children: <Widget>[
                           Text("I Have an account"),
