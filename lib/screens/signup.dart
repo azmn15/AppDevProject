@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:appdevproject/screens/login.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -152,13 +153,20 @@ class _SignUpState extends State<SignUp> {
                             width: 10,
                           ),
                           GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).pushReplacement(
+                           MaterialPageRoute(
+                             builder: (ctx) => Login(),
+                          ),
+                        );
+                            },
                             child: Text(
                               "Login",
                               style: TextStyle(color: Colors.cyan, 
                               fontSize: 20, 
                               fontWeight: FontWeight.bold),
                               ),
-                              ),
+                           ),
                         ],
                       )
                     ],
