@@ -11,6 +11,7 @@ class PasswordTextFormField extends StatelessWidget {
     this.onTap,
     this.name,
     this.obserText,
+    String? Function(value) validator,
   });
   @override
   Widget build(BuildContext context) {
